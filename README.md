@@ -9,9 +9,8 @@ Setup
 1. Install the **GDAL Complete** framework from www.kyngchaos.com/software/frameworks
 2. Setup GDAL in your path (copy and paste into Terminal)
 
-```echo 'export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH' >> ~/.bash_profile
-
-source ~/.bash_profile```
+<code>echo 'export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH' >> ~/.bash_profile<br>
+source ~/.bash_profile</code>
 
 3. Verify that GDAL is set up by typing `gdal_translate` into a terminal window. If it spits out a load of stuff then it's setup
 
