@@ -15,8 +15,6 @@ from PIL import Image
 
 
 #SETUP
-#directory of gdal_translate 
-gdal_translateDir = "/Library/Frameworks/GDAL.framework/Versions/1.9/Programs/"
 
 #VARIABLES
 #schema variables for validating KML against
@@ -123,12 +121,12 @@ if checkKML(kmlFile):
 
 		#Use GDAL to convert the image into a vrt file with latlonquad values embedded
 		command = "-of VRT -a_srs EPSG:4326 -gcp 0 0 "+KMLCoords[0]['latitude']+" "+KMLCoords[0]['longitude']+" -gcp "+str(imageCoords[0])+" 0 "+KMLCoords[1]['latitude']+" "+KMLCoords[1]['longitude']+" -gcp 0 "+str(imageCoords[1])+" "+KMLCoords[3]['latitude']+" "+KMLCoords[3]['longitude']+" -gcp "+str(imageCoords[0])+" "+str(imageCoords[1])+" "+KMLCoords[2]['latitude']+" "+KMLCoords[2]['longitude']
-		vrtCmd = ' '.join([gdal_translateDir+"gdal_translate", command, imageFile, outputDir+"/map.vrt"])
+		vrtCmd = ' '.join(["gdal_translate", command, imageFile, outputDir+"/map.vrt"])
 		subprocess.call(vrtCmd, shell=True)
 
 		print "Successfully generated the VRT file"
 
-		Zoomlevel = (raw_input("What zoom levels would you like to generate the tiles for (the higher the level the more zoomed in you can go)")).strip()
+		Zoomlevel = (raw_input("What zoom levels would you like to generate the tiles for (the higher the level the more zoomed in you can go, use - for ranges e.g. 1-10)")).strip()
 		#Use GDAL again to convert the vrt file into a series of tiles that can be dropped into the project
 		tilesCmd = ' '.join(['python gdal2tiles.py', '-p mercator -z '+Zoomlevel+' -r bilinear', outputDir+'/map.vrt '+outputDir+'/map'])
 		subprocess.call(tilesCmd, shell=True)
