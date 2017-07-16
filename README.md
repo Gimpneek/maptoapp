@@ -1,5 +1,9 @@
+THIS PORJECT IS NO LONGER ACTIVELY MAINTAINED
+=============================================
+
+
 maptoapp
-========
+--------
 
 A simple python script to convert KML into map tiles ready for iOS projects. Currently only tested in Mac OS X.
 
@@ -28,8 +32,3 @@ Currently the script walks to you through the steps needed to generate the tiles
 8. For the zoom levels you can enter a single number or a range (using a hypen to seperate the range) between 1 and 20
 9. The script then processes the tiles for you based on the details supplied and outputs them in the folder specified
 10. The output folder will have a number of folders in it corresponding to the zoom levels you specified. You can drag and drop these into your project (example: http://www.shawngrimes.me/2010/12/mapkit-overlays-session-1-overlay-map/ )
-
-Todo
-----
-- [ ] Setup script that creates correct environment for script
-- [ ] Create a web version where files and images can be uploaded and an archive of the tiles returned
